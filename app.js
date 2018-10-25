@@ -2,6 +2,7 @@
 
 const minGame = 5;
 const maxGame = 11;
+let boardArray = [];
 const gameSize = document.getElementById('gameSize');
 const boardStart = document.getElementById('gameBoard');
 const selector = document.getElementById('selector');
@@ -31,16 +32,21 @@ const generateGame = (event) => {
   // Dynamically creating the game board
 
   const dimensions = event.target.selector.value;
+  boardArray = [];
   for (let i = 0; i < dimensions; i++) {
+    const boardPieces = [];
     let boardRow = document.createElement('section');
     boardRow.setAttribute('id', `row${i}`);
     for (let j = 0; j < dimensions; j++) {
       let boardPiece = document.createElement('div');
       boardPiece.setAttribute('id', `piece${i}${j}`);
+      boardPieces.push(boardPiece);
       boardRow.appendChild(boardPiece);
     }
+    boardArray.push(boardPieces);
     boardStart.appendChild(boardRow);
   }
+  console.log(boardArray);
 };
 
 // Tying game population to submit button
