@@ -2,4 +2,3 @@
 
 A simple game using vanilla HTML, JavaScript, and CSS
 
-ES6, CSS Grid
