@@ -32,6 +32,8 @@ gameOptions();
 
 const generateGame = (event) => {
   event.preventDefault();
+  clickCount = 0;
+  localStorage.setItem('click count', clickCount);
 
   // Removing existing game board
 
@@ -67,35 +69,26 @@ const flipPiece = (event) => {
   const intArray = selectedPiece.map(x => parseInt(x));
   const center = boardArray[intArray[0]][intArray[1]];
   adjacentFlipper(center, targetString);
-  // console.log(targetString.parentNode.childNodes[intArray[0] - 1]);
   if (intArray[1] !== boardArray.length - 1) {
     const right = boardArray[intArray[0]][intArray[1] + 1];
     adjacentFlipper(right, targetString.nextSibling);
   }
   if (intArray[1] !== 0) {
     const left = boardArray[intArray[0]][intArray[1] - 1];
-    // console.log(left);
     adjacentFlipper(left, targetString.previousSibling);
   }
   if (intArray[0] !== boardArray.length - 1) {
-    // console.log('here');
     const bottom = boardArray[intArray[0] + 1][intArray[1]];
-    console.log(bottom);
-    console.log(targetString.parentNode.parentNode.childNodes[intArray[0] + 1].childNodes[intArray[1]]);
-    // childNodes[intArray[1] + 1]);
     adjacentFlipper(bottom, targetString.parentNode.parentNode.childNodes[intArray[0] + 1].childNodes[intArray[1]]);
   }
   if (intArray[0] !== 0) {
     const top = boardArray[intArray[0] - 1][intArray[1]];
     adjacentFlipper(top, targetString.parentNode.parentNode.childNodes[intArray[0] - 1].childNodes[intArray[1]]);
   }
-  // if (intArray[0] !== 0) {
-  //   const top = boardArray[intArray[0]][intArray[0] - 1];
-  //   adjacentFlipper(top, targetString.previousSibling);
-  // }
 
   clickCount++;
   clickCounter.textContent = `Total Clicks: ${clickCount}`;
+  localStorage.setItem('click count', clickCount);
   if (isWinner(boardArray)) {
     console.log('WINNER WINNER');
   }
