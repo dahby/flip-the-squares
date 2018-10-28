@@ -8,7 +8,10 @@ let clickCount = 0;
 let boardArray = [];
 const boardStart = document.getElementById('gameBoard');
 const clickCounter = document.getElementById('totalClicks');
+const gameWon = document.getElementById('gameWon');
 
+gameWon.style.display = 'none';
+// boardStart.style.display = 'none';
 // Populating drop down for game size
 
 class GamePiece {
@@ -91,6 +94,8 @@ const flipPiece = (event) => {
   localStorage.setItem('click count', clickCount);
   if (isWinner(boardArray)) {
     console.log('WINNER WINNER');
+    boardStart.style.display = 'none';
+    gameWon.style.display = 'block';
   }
 };
 

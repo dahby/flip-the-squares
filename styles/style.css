@@ -23,8 +23,6 @@ h2 {
 }
 
 section {
-  /* margin-left: 50px; */
-  /* background-color: white; */
   display: flex;
   flex-flow: nowrap;
   justify-content: center;
@@ -40,4 +38,22 @@ section {
 
 .clicked {
   background-color: red;
+}
+
+#gameWon {
+  background-color: green;
+  width: 80%;
+  height: 350px;
+  margin: auto;
+  display: flex;
+  border: white 5px solid;
+  margin-top: 20px;
+}
+
+#winningText {
+  font-size: 100px;
+  display: flex;
+  line-height: 100px;
+  padding-top: 30px;
+  justify-content: center;
 }
